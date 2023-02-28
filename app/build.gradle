@@ -1,0 +1,132 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+apply plugin: "kotlin-kapt"
+
+
+
+android {
+    namespace 'com.actia.myapplication'
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.actia.myapplication"
+        minSdk 28
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+
+
+    // Enables data binding.
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+    }
+
+    viewBinding {
+        enabled = true
+    }
+
+}
+
+dependencies {
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+    implementation 'androidx.test.espresso:espresso-idling-resource:3.5.0'
+    def kotlin_version = '1.5.31'
+    def lifecycle_version = "2.4.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
+    implementation 'androidx.core:core-ktx:1.2.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.0'
+
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+
+
+    //retrofit
+    implementation('com.squareup.retrofit2:retrofit:2.6.2')
+    implementation('com.squareup.retrofit2:adapter-rxjava2:2.6.2')
+    implementation('com.squareup.retrofit2:converter-scalars:2.6.2')
+
+
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
+
+
+    //OKHttp
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
+
+    //Librerías RXKotlin
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+
+    testImplementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
+    testImplementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+
+
+
+    //Koin
+    ext.koin_version = '2.2.3'
+    // Koin AndroidX Fragment features
+    implementation "io.insert-koin:koin-androidx-fragment:$koin_version"
+    // Koin Android Scope features
+    implementation "io.insert-koin:koin-androidx-scope:$koin_version"
+    // Koin Android ViewModel features
+    implementation "io.insert-koin:koin-androidx-viewmodel:$koin_version"
+    // Koin Core features
+    implementation "io.insert-koin:koin-core:$koin_version"
+
+    //picassa
+    ext.picassa_version = '2.8'
+    implementation "com.squareup.picasso:picasso:$picassa_version"
+
+
+    // Mockk
+    testImplementation 'io.mockk:mockk:1.12.0'
+
+    // MockWebServer
+    testImplementation("com.squareup.okhttp3:mockwebserver:3.8.0")
+    testImplementation ('com.squareup.retrofit2:converter-simplexml:2.1.0'){
+        exclude group: 'stax', module: 'stax-api'
+        exclude group: 'stax', module: 'stax'
+        exclude group: 'xpp3', module: 'xpp3'
+    }
+
+    androidTestImplementation("com.squareup.okhttp3:mockwebserver:3.8.0")
+    androidTestImplementation ('com.squareup.retrofit2:converter-simplexml:2.1.0'){
+        exclude group: 'stax', module: 'stax-api'
+        exclude group: 'stax', module: 'stax'
+        exclude group: 'xpp3', module: 'xpp3'
+    }
+
+    // Koin testing tools
+    testImplementation "io.insert-koin:koin-test:$koin_version"
+    androidTestImplementation "io.insert-koin:koin-test:$koin_version"
+
+    androidTestImplementation("androidx.test.espresso:espresso-contrib:3.5.0")
+
+}

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.main.view.MainFragment">
+
+    <data>
+        <variable name="obj" type="com.actia.myapplication.data.domain.model.DetailItem"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ctlPanelDetailItem"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="#f00"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+            app:title="@string/title_toolbar_detail" />
+
+        <TextView
+            android:id="@+id/lblTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+
+            android:text="@string/lbl_title"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+
+            />
+
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+
+            app:layout_constraintBaseline_toBaselineOf="@+id/lblTitle"
+            app:layout_constraintEnd_toStartOf="@+id/imgPoster"
+            app:layout_constraintStart_toEndOf="@+id/barrier2"
+            tools:text="@string/hello_blank_fragment"
+            android:text="@{obj.title}"/>
+
+
+        <TextView
+            android:id="@+id/lblDirector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+
+            android:text="@string/lbl_director"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblTitle"
+
+            />
+
+        <TextView
+            android:id="@+id/txtDirector"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+
+            app:layout_constraintBaseline_toBaselineOf="@+id/lblDirector"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/barrier2"
+            tools:text="@string/hello_blank_fragment"
+            android:text="@{obj.director}"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgPoster"
+            android:layout_width="@dimen/width_item_image"
+            android:layout_height="@dimen/height_item_image"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            tools:src="@tools:sample/avatars"
+            android:paddingTop="5dp"
+
+            app:imageUrl = "@{obj.poster}"/>
+
+        <TextView
+            android:id="@+id/lblReleaseYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/lbl_releaseYear"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtDirector" />
+
+        <TextView
+            android:id="@+id/txtReleaseYear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+
+
+            app:layout_constraintBaseline_toBaselineOf="@+id/lblReleaseYear"
+            app:layout_constraintEnd_toStartOf="@+id/imgPoster"
+            app:layout_constraintStart_toEndOf="@+id/barrier2"
+            tools:text="@string/hello_blank_fragment"
+            android:text="@{obj.releaseYear}"/>
+
+        <TextView
+            android:id="@+id/lblDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/lbl_duration"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtReleaseYear" />
+
+
+        <TextView
+            android:id="@+id/txtDuration"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+
+            app:layout_constraintBaseline_toBaselineOf="@+id/lblDuration"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/barrier2"
+            tools:text="@string/hello_blank_fragment"
+            android:text="@{obj.duration}"/>
+
+        <TextView
+            android:id="@+id/lblDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/lbl_description"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtDuration" />
+
+
+        <TextView
+            android:id="@+id/txtDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+
+            app:layout_constraintBaseline_toBaselineOf="@+id/lblDescription"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/barrier2"
+            tools:text="@string/hello_blank_fragment"
+            android:text="@{obj.description}"/>
+
+
+        <TextView
+            android:id="@+id/lblScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/lbl_score"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtDescription" />
+
+        <TextView
+            android:id="@+id/txtScore"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+
+            app:layout_constraintBaseline_toBaselineOf="@+id/lblScore"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/barrier2"
+            tools:text="@string/hello_blank_fragment"
+            android:text="@{obj.score}"/>
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="right"
+            app:constraint_referenced_ids="lblTitle,
+            lblDescription, lblDirector, lblDuration, lblReleaseYear, lblScore"/>
+
+        <include android:id="@+id/include_velo" layout="@layout/include_waiting_response"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

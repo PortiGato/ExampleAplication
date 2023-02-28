@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.main.view.MainFragment">
+
+    <data>
+        <variable name="mainViewModel" type="com.actia.myapplication.ui.main.viewmodel.MainViewModel" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/etTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:autofillHints="name"
+            android:hint="@string/hint_edittext_title"
+            android:inputType="text"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/btnBuscar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnBuscar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+
+
+            android:text="@string/btn_search_caption"
+
+
+            app:layout_constraintBottom_toBottomOf="@+id/etTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/etTitle"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinYears"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:entries="@{mainViewModel.getYearsLiveData}"
+            android:selectedItemPosition="@={mainViewModel.selectedYearLiveData}"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnBuscar">
+
+        </androidx.appcompat.widget.AppCompatSpinner>
+
+
+        <TextView
+            android:id="@+id/tvEmptyList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="top|center"
+
+
+            android:text="@string/no_data"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@+id/spinYears"
+            android:paddingTop="10dp"/>
+
+
+        <com.actia.myapplication.controls.RecyclerViewEmptySupport
+            android:id="@+id/rvItems"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:listData="@{mainViewModel.getItemsLiveData}"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinYears"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+        <include android:id="@+id/include_velo" layout="@layout/include_waiting_response"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</layout>
